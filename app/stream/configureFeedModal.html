@@ -1,0 +1,30 @@
+<div class="messageBox">
+    <div class="modal-header">
+        <h3>Atom feed configuration</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" data-bind="submit: ok">
+            <p class="message"></p>
+            <table class="table table-condensed">
+                <tbody data-bind="foreach: feeds">
+                    <tr>
+                       <td><input data-bind="value: title, valueUpdate: 'afterkeydown'"/></td>
+                       <td><input data-bind="value: url, valueUpdate: 'afterkeydown'"/></td>
+                       <td><a href="#" data-bind="click: function() { $parent.removeFeed($data) }">delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-small btn-primary" data-bind="click: addFeed">add Atom feed</button>
+
+            <label class="checkbox" data-bind="visible: hasStore">
+                <input type="checkbox" data-bind="checked: rememberSettings"> Remember settings
+            </label>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-bind="click: close">Cancel</button>
+        <button class="btn btn-primary" data-bind="click: ok">Ok</button>
+    </div>
+</div>

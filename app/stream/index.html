@@ -1,0 +1,58 @@
+﻿<div class="row-fluid">
+    <div class="column span3">
+            <div class="padding">
+                <div class="well">
+                    <a href="#" class="pull-right" data-bind="click: configureFeeds">
+                        <i class="icon-cog"></i>&nbsp;
+                    </a>
+                    <ul class="smallNoWrap" data-bind="foreach: feeds">
+                        <li>
+                            <img class="favicon" data-bind="attr: { src: $data.ico(), alt: title }" class="favicon">
+                            <span data-bind="text: title"></span>
+                        </li>
+                    </ul>
+
+                </div>
+                <div>
+                    <div data-toggle="buttons-radio" class="btn-group">
+                        <button title="List view"
+                                data-bind="css: { active: !showSummary() }, enable: showSummary, click: toggleSummary"
+                                class="btn">
+                            <i class="icon-align-justify"></i>
+                        </button>
+                        <button title="Expanded view"
+                                data-bind="css: { active: showSummary() }, enable: !showSummary(), click: toggleSummary"
+                                class="btn active">
+                            <i class="icon-th-list"></i>
+                        </button>
+                    </div>
+                    <div data-toggle="buttons-radio" class="btn-group">
+                        <button class="btn" data-bind="click: markAllAsRead">mark all as Read</button>
+                    </div>
+                </div>
+
+                <ul class="smallNoWrap">
+                    <li>last record <span data-bind="text: getLastUpdated"></span></li>
+                </ul>
+
+            </div>
+        </div>
+
+    <div class="column span9">
+        <div class="padding">
+            <ul class="results unstyled">
+                <!-- ko foreach: results -->
+                    <!-- ko if: $data.isVisible() -->
+                        <!--ko compose: $data-->
+                        <!--/ko-->
+                    <!--/ko -->
+                <!--/ko-->
+            </ul>
+            <div class="text-center" data-bind="visible: showMore()">
+               <button type="button" title="show more" data-bind="click: showAll">more</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+

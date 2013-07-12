@@ -1,0 +1,35 @@
+﻿<div>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+
+                <a class="brand" data-bind="attr: { href: '#' }">
+                    <i class="icon-home"></i>
+                    <span>Durandal</span>
+                </a>
+
+                <div class="nav-collapse">
+                    <ul class="nav" data-bind="foreach: router.navigationModel">
+                        <li data-bind="css: { active: isActive }">
+                            <a data-bind="attr: { href: hash }, html: title"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
+                    <i class="icon-spinner icon-2x icon-spin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-host clearfix">
+        <div class="box">
+            <!--ko router: { transition:'entrance', cacheViews:false }--><!--/ko-->
+        </div>
+    </div>
+        <div class="footer clearfix">
+            <p>Copyright © 2012 <a href="http://rainerat.spirit.de">RainerAtSpirit</a> Source:
+                <a href="https://github.com/dFiddle/dStream">https://github.com/dFiddle/dStream</a>
+            </p>
+        </div>
+</div>

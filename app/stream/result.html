@@ -1,0 +1,14 @@
+﻿<li class="result" data-bind="css: {new: isNew()}, attr: {id: id}">
+    <div data-bind="visible: isVisible()">
+        <button type="button" title="mark as read" class="close"
+                data-bind="click: markAsRead, visible: isNew()">&times;</button>
+        <div>
+            <h3><a data-bind="attr: { href: link}, html: title, click: toggle"></a></h3>
+
+            <div class="cite">
+                <cite><span data-bind="text: author"></span> <span data-bind="text: updated"></span></cite>
+            </div>
+            <div data-bind="html: summary, visible: isExpanded()"></div>
+        </div>
+    </div>
+</li>

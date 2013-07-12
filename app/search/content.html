@@ -1,0 +1,16 @@
+﻿<div class="alert alert-preview" data-bind="visible: isExpanded">
+    <button type="button" class="close" data-bind="click: toggle">&times;</button>
+
+    <!-- ko if: isLoading() -->
+    <div class="splash">
+        <div class="message">
+             loading...
+         </div>
+         <i class="icon-spinner icon-2x icon-spin active"></i>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: !isLoading() -->
+    <div class="detail" data-bind="html: remoteContent">
+    </div>
+    <!-- /ko -->
+</div>

@@ -1,0 +1,26 @@
+﻿<div class="row-fluid">
+   <div class="offset1 span8">
+        <div class="padding">
+            <form class="form-search" data-bind="submit:submitQuery">
+                <div class="input-append">
+                    <input type="text" placeholder="in Durandal's documentation"
+                           data-bind="value: query, valueUpdate: 'afterkeydown'"
+                           class="search-query input-xxlarge">
+                    <button type="submit" class="btn" data-bind="click: submitQuery, enable: canQuery">
+                        <i class="icon-search icon-white"></i>
+                    </button>
+                </div>
+            </form>
+            <ul class="unstyled" data-bind="foreach: results">
+                <!--ko compose: $data-->
+                <!--/ko-->
+            </ul>
+        </div>
+    </div>
+    <div class="span3">
+         <div class="padding">
+             <!-- Empty for now -->
+         </div>
+     </div>
+
+</div>
