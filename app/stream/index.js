@@ -1,24 +1,20 @@
 ﻿/*!
  * Copyright 2013 (C) Spirit-EDV-Beratung AG. All rights reserved.
  */
-define(['./feed', './configureFeedModal', './result', 'durandal/system', 'durandal/app', 'plugins/router', 'knockout', 'jquery', 'store'],
-    function( Feed, configureFeedModal, Result, system, app, router, ko, $, store ) {
+define(['config', './feed', './configureFeedModal', './result', 'durandal/system', 'durandal/app', 'plugins/router', 'knockout', 'jquery', 'store'],
+    function( config, Feed, configureFeedModal, Result, system, app, router, ko, $, store ) {
         var timeout;
         var runInit = true;
+        var defaultFeed = config.defaultFeed;
         var hasStore = store.enabled;
+
         var results = ko.observableArray([]);
         var showSummary = ko.observable(false);
         var numberOfEntries = ko.observable(15);
         var showMore = ko.observable(true);
         var atomUrls = ko.observableArray([]);
         var feeds = ko.observableArray([]);
-
         var selectedLi = ko.observable('');
-
-        var defaultFeeds = [
-            {title: 'Stack Overflow', url: 'http://stackoverflow.com/feeds/tag?tagnames=durandal&sort=newest'},
-            {title: 'Google Groups', url: 'https://groups.google.com/forum/feed/durandaljs/msgs/atom.xml?num=15'}
-        ];
 
         var getAtomUrlsForYQL = ko.computed(function() {
             var yqlAtomUrls = [];
@@ -166,8 +162,6 @@ define(['./feed', './configureFeedModal', './result', 'durandal/system', 'durand
         }
 
         function getStream ( since ) {
-            var yqlPublicUrl = 'http://query.yahooapis.com/v1/public/yql';
-
             var q = 'select entry from xml where url in (';
             q += getAtomUrlsForYQL();
             q += ')';
@@ -182,7 +176,7 @@ define(['./feed', './configureFeedModal', './result', 'durandal/system', 'durand
                 diagnostics: false
             };
 
-            return $.getJSON(yqlPublicUrl, params).then(function( data ) {
+            return $.getJSON(config.yqlPublicUrl, params).then(function( data ) {
                     var jsonResults = data.query.results;
                     var queryResult = [];
 
@@ -200,7 +194,7 @@ define(['./feed', './configureFeedModal', './result', 'durandal/system', 'durand
 
                     function poll ( delay ) {
                         var lastRecordUpdated = getLastUpdated();
-                        delay = delay || 120000;
+                        delay = delay || config.delay;
 
                         window.clearTimeout(timeout);
                         timeout = window.setTimeout(function() {

@@ -1,10 +1,7 @@
 ﻿/*!
 * Copyright 2013 (C) Spirit-EDV-Beratung AG. All rights reserved.
 */
-define(['knockout', 'jquery'], function(ko, $) {
-    var baseContentUrl = 'http://pipes.yahoo.com/pipes/pipe.run';
-    baseContentUrl += '?_id=b661dd58aed9c23ade7bae0d7bc148cd&_render=json';
-    baseContentUrl +='&xpath=%2F%2Fsection%5Bcontains%28%40class%2C+%27content%27%29%5D&url=';
+define(['config', 'knockout', 'jquery'], function(config, ko, $) {
 
     var ctor = function( url ) {
         this.url = url;
@@ -18,7 +15,7 @@ define(['knockout', 'jquery'], function(ko, $) {
         if (typeof this.url === 'undefined'){
             return;
         }
-        var contentUrl = baseContentUrl + encodeURIComponent(this.url);
+        var contentUrl =  config.baseContentUrl + encodeURIComponent(this.url);
 
         $.getJSON(contentUrl).then(function(data){
             var content = parseHtmlEnteties(data.value.items[0].content);

@@ -1,8 +1,8 @@
 ﻿/*!
  * Copyright 2013 (C) Spirit-EDV-Beratung AG. All rights reserved.
  */
-define(['./result', 'durandal/system', 'plugins/router', 'knockout', 'jquery'],
-  function( Result, system, router, ko, $ ) {
+define(['config', './result', 'durandal/system', 'plugins/router', 'knockout', 'jquery'],
+  function( config, Result, system, router, ko, $ ) {
       var query = ko.observable('');
       var results = ko.observableArray([]);
       var canQuery = ko.computed(function() {
@@ -34,7 +34,6 @@ define(['./result', 'durandal/system', 'plugins/router', 'knockout', 'jquery'],
       }
 
       function search () {
-          var yqlPublicUrl = 'http://query.yahooapis.com/v1/public/yql';
           var q = 'use "store://BvKtmwzyIxAgXKcswjsUG2" as dsearch;';
           q += ' SELECT * FROM dsearch WHERE q="' + encodeURIComponent(query()) + '"';
           var params = {
@@ -42,7 +41,7 @@ define(['./result', 'durandal/system', 'plugins/router', 'knockout', 'jquery'],
               format: 'json'
           };
 
-          $.getJSON(yqlPublicUrl, params).then(function( data ) {
+          $.getJSON(config.yqlPublicUrl, params).then(function( data ) {
                 if (data.query.count === 0){
                     return;
                 }
