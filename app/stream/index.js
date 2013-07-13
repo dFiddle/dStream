@@ -31,6 +31,15 @@ define(['config', './feed', './configureFeedModal', './result', 'durandal/system
             }
             return lastUpdated;
         });
+        var countNew = ko.computed(function() {
+            var count = 0;
+            if (results().length > 0 ){
+                count = ko.utils.arrayFilter(results(), function(result) {
+                            return result.isNew() === true;
+                }).length;
+            }
+            return count;
+        });
 
         return {
             activate: activate,
@@ -45,9 +54,11 @@ define(['config', './feed', './configureFeedModal', './result', 'durandal/system
             toggleSummary: toggleSummary,
             markAllAsRead: markAllAsRead,
             showAll: showAll,
+            showNew: showNew,
             showMore: showMore,
             configureFeeds: configureFeeds,
-            getLastUpdated: getLastUpdated
+            getLastUpdated: getLastUpdated,
+            countNew: countNew
         };
         function activate () {
             var tempFeeds = [];
@@ -67,7 +78,7 @@ define(['config', './feed', './configureFeedModal', './result', 'durandal/system
 
                 }
                 else {
-                    $.each(defaultFeeds, function( idx, obj ) {
+                    $.each(config.defaultFeeds, function( idx, obj ) {
                         tempFeeds.push(new Feed(obj));
                     });
 
@@ -159,6 +170,10 @@ define(['config', './feed', './configureFeedModal', './result', 'durandal/system
             $.each(results(), function( idx, obj ) {
                 obj.isVisible(true);
             });
+        }
+
+        function showNew(){
+            document.getElementById(results()[0].id).scrollIntoView()
         }
 
         function getStream ( since ) {

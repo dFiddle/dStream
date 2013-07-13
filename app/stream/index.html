@@ -27,12 +27,17 @@
                         </button>
                     </div>
                     <div data-toggle="buttons-radio" class="btn-group">
-                        <button class="btn" data-bind="click: markAllAsRead">mark all as Read</button>
+                        <button class="btn" data-bind="click: markAllAsRead">mark all as read</button>
                     </div>
                 </div>
 
                 <ul class="smallNoWrap">
                     <li>last record <span data-bind="text: getLastUpdated"></span></li>
+                    <li data-bind="visible: countNew() > 0">
+                        <a href="#" data-bind="click: showNew">
+                            <span data-bind="text: countNew()"></span> new
+                        </a>
+                    </li>
                 </ul>
 
             </div>
