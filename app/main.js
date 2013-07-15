@@ -7,12 +7,12 @@
       'bootstrap': '../lib/bootstrap/js/bootstrap',
       'store': '../lib/store/store',
       'knockout': [
-          '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1',
-          '../lib/jquery/jquery-1.9.1'
+          '//cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min',
+          '../lib/knockout/knockout-2.3.0'
       ],
       'jquery': [
           '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min',
-          '../lib/knockout/knockout-2.2.1'
+          '../lib/jquery/jquery-1.9.1.min'
       ]
     }
 });
