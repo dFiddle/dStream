@@ -151,7 +151,9 @@ html, body {
     color: #093;
 }
 
-
+.result code {
+    white-space: pre-wrap;
+}
 
 .navbar-fixed-top .navbar-inner {
     padding-left: 1em;

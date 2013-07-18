@@ -8,6 +8,7 @@ define(['config', './result', 'durandal/system', 'plugins/router', 'knockout', '
       var canQuery = ko.computed(function() {
           return query() ? true : false;
       });
+      var resultCount = ko.observable();
 
       return {
           query: query,
@@ -15,7 +16,8 @@ define(['config', './result', 'durandal/system', 'plugins/router', 'knockout', '
           canQuery: canQuery,
           submitQuery: submitQuery,
           search: search,
-          activate: activate
+          activate: activate,
+          resultCount: resultCount
       };
 
       function activate (route) {
@@ -48,6 +50,7 @@ define(['config', './result', 'durandal/system', 'plugins/router', 'knockout', '
 
                 var solr = data.query.results.json;
                 var queryResult = [];
+                resultCount(parseInt(solr.response.numFound, 10));
 
                 $(solr.response.docs).each(function( idx, obj ) {
                     var encId = obj.id.replace(/\//g, '_');
