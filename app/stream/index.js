@@ -41,6 +41,16 @@ define(['config', './feed', './configureFeedModal', './result', 'durandal/system
             return count;
         });
 
+        var updateTitle = countNew.subscribe(function(count){
+           var title = document.title.replace(/\(\d+\)$/g, '');
+           if ( count > 0 ){
+               title = title + '(' + count + ')';
+           }
+           document.title = title;
+           system.log('count', count, title);
+
+        });
+
         return {
             activate: activate,
             binding: binding,
