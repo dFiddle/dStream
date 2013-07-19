@@ -1,5 +1,31 @@
 ﻿<div class="row-fluid">
-   <div class="offset1 span8">
+    <div class="column span3">
+        <div class="padding" data-bind="with: dataContext">
+            <div class="well">
+                <ul class="smallNoWrap">
+                   <li data-bind="visible: (numFound() > 0)"> Showing <span data-bind="text: from"></span> to <span
+                       data-bind="text: to"></span> of <span
+                       data-bind="text: numFound"> </span> records
+                   </li>
+                   <li data-bind="visible: (numFound() === 0)">No records found</li>
+                </ul>
+            </div>
+
+            <ul class="pager">
+                <li data-bind="css: { disabled: !hasPrevious() || isFetching() }">
+                    <a href="#"
+                       data-bind="click: previous.bind($data)"><i
+                        class="icon-angle-left"></i>previous</a>
+                </li>
+                <li data-bind="css: { disabled: !hasNext() || isFetching() }">
+                    <a href="#" data-bind="click: next.bind($data)">next <i
+                        class="icon-angle-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="column span9">
         <div class="padding">
             <form class="form-search" data-bind="submit:submitQuery">
                 <div class="input-append">
@@ -15,13 +41,8 @@
                 <!--ko compose: $data-->
                 <!--/ko-->
             </ul>
-            <p data-bind="if: (resultCount() === 0)">no results</p>
+            <p data-bind="if: (dataContext.numFound() === 0)">no results</p>
         </div>
     </div>
-    <div class="span3">
-         <div class="padding">
-             <!-- Empty for now -->
-         </div>
-     </div>
 
 </div>

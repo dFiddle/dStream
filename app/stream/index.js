@@ -109,27 +109,32 @@ define(['config', './feed', './configureFeedModal', './result', 'durandal/system
         }
 
         function attached ( view, parent ) {
+            var $results = $('.results', view);
+            $results.on("contextmenu", "h3 > a", function(e){
+                var vm = ko.dataFor(e.currentTarget);
+                vm.isNew(false);
+            });
+
+            $results.on('dblclick', 'li', function( e ) {
+               if ( getSelectedText() !== '' ) {
+                   var vm = ko.dataFor(e.currentTarget);
+
+                   if ( vm.id ) {
+                       selectedLi(vm.id)
+                   }
+                   router.navigate('#search/' + encodeURIComponent(getSelectedText()), true);
+               }
+           });
+
             system.log('Lifecycle : attached : stream/index');
         }
 
         function compositionComplete ( view ) {
-            system.log('Lifecycle : compositionComplete : stream/index');
-
             if ( selectedLi() !== '' ) {
                 document.getElementById(selectedLi()).scrollIntoView();
             }
 
-            $('.results', view).on('dblclick', 'li', function( element ) {
-                if ( getSelectedText() !== '' ) {
-                    var vm = ko.dataFor(element.currentTarget);
-                    system.log('compositionComplete : stream/index : dblclick', element, vm);
-
-                    if ( vm.id ) {
-                        selectedLi(vm.id)
-                    }
-                    router.navigate('#search/' + encodeURIComponent(getSelectedText()), true);
-                }
-            })
+            system.log('Lifecycle : compositionComplete : stream/index');
         }
 
         function detached ( view ) {
