@@ -193,6 +193,18 @@ html, body {
     .navbar-fixed-top {
         margin-bottom: 0;
     }
+
+    .column {
+        height: auto;
+    }
+    
+    .column .padding {
+        padding: 10px;
+    }
+    
+    .span9 .padding{
+        padding-bottom: 40px;
+    }
 }
 
 ﻿.configuration, .tweets, .tweets td { font-size: 14px; }
