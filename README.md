@@ -1,10 +1,10 @@
-# dStream [http://dfiddle.github.io/dStream/]
-
-> **rough cut** use on your own risk!
+# dStream
+### Live: [http://dfiddle.github.io/dStream/]
+>  **2013/08/19**: Updated to release version of [Durandal] 2.0.0
 
 ### What is it?
 
-A pet project that uses a cut down version of [Durandal 2.0.0 pre], hosted as a Github repo with only one gh-pages
+A pet project that uses a cut down version of [Durandal 2.0.0], hosted as a Github repo with only one gh-pages
 branch.
 It serves three purposes:
 
@@ -20,17 +20,16 @@ first out_. Feed will be updated on a regular basis, so just leave your browser 
 
 #### 2. searching the Durandal documentation while streaming
 - not sure what `activate` really does, but the whole world is talking about it?
-- double click on anything in the stream that might be in Durandal's documentation (version 1.2 for the time being)
+- double click on anything in the stream that might be in Durandal's documentation
 - see search results on a dedicated search page
 - fetch complete article by clicking on a result header
 - use browser back button to return to stream view
 
-#### 3. it's a small, educational [Durandal 2.0.0 pre] app
+#### 3. it's a small, educational [Durandal 2.0.0] app
 - it puts together a couple of concepts demoed in the default samples ([dFiddle-2.0])
 - it's not a best practice app! I leave that up to @EisenbergEffect `:)`
 - it's not meant as a replacement for any real feed reader app and there are no plans to add more features...
 - ... or to make it more robust. If something breaks feel free to fix it.
-- that said once Durandal's 2.0 documentation becomes available it will be integrated
 
 
 Enjoy,
@@ -39,7 +38,7 @@ Rainer
 
 
 [Durandal]:http://durandaljs.com/
-[Durandal 2.0.0 pre]:https://github.com/BlueSpire/Durandal/releases/tag/v2.0.0-pre
+[Durandal 2.0.0]:https://github.com/BlueSpire/Durandal/releases/tag/2.0.0
 [dFiddle-2.0]:https://github.com/dFiddle/dFiddle-2.0
 [YQL]:http://developer.yahoo.com/yql/console/
 [http://dfiddle.github.io/dStream/]:http://dfiddle.github.io/dStream/
